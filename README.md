@@ -9,3 +9,13 @@ Google places API demo app for android which lists surrounding Restaurants, Mall
 Add your Google places Access key in MainActivity.java, and also update location values.
         
     https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=your_lat,your_long&radius=100000&sensor=true&key=your_key_here&types=
+    
+    
+Add your map key in details.xml
+    <com.google.android.maps.MapView
+            android:layout_marginTop="10dp"
+            android:id="@+id/mapView"
+            android:layout_width="fill_parent"
+            android:layout_height="250dp"
+            android:apiKey="your_map_key"
+            android:clickable="true" />
