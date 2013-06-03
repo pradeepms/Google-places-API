@@ -13,10 +13,10 @@ Add your Google places Access key in MainActivity.java, and also update location
     
 Add your map key in details.xml
 
-    &lt;com.google.android.maps.MapView
+    <com.google.android.maps.MapView
     android:layout_marginTop="10dp"
     android:id="@+id/mapView"
     android:layout_width="fill_parent"
     android:layout_height="250dp"
     android:apiKey="your_map_key"
-    android:clickable="true" /&gt;
+    android:clickable="true" />
