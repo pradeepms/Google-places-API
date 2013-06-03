@@ -27,3 +27,8 @@ Add your map key in details.xml
 
 
 ### Screen shots :
+![Alt text](http://pradeepms.do.am/GitHub-Images/placeUI.png "Main UI")
+![Alt text](http://pradeepms.do.am/GitHub-Images/placeDetail.png "Detail UI")
+
+
+
