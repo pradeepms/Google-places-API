@@ -24,3 +24,6 @@ Add your map key in details.xml
 
 #### Dependency
 * Add [Action Bar Sherlock] (https://github.com/PradeepMS/ActionBarSherlock) library project.
+
+
+### Screenshots of application.
