@@ -20,3 +20,7 @@ Add your map key in details.xml
     android:layout_height="250dp"
     android:apiKey="your_map_key"
     android:clickable="true" />
+
+
+#### Dependency
+* Add [Action Bar Sherlock] (https://github.com/PradeepMS/ActionBarSherlock) library project.
