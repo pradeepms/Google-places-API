@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Iterator;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
@@ -36,16 +38,17 @@ import com.actionbarsherlock.app.SherlockActivity;
 
 public class MainActivity extends SherlockActivity implements ActionBar.OnNavigationListener,
 		OnItemClickListener {
-	private ArrayList<GetterSetter> myArrayList;
-	private ListView myList;
+	public ArrayList<GetterSetter> myArrayList;
+	ListView myList;
 	private String[] places;
-	private ProgressDialog dialog;
-	private TextView nodata;
-	private CustomAdapter adapter;
-	private GetterSetter addValues;
+	ProgressDialog dialog;
+	TextView nodata;
+	CustomAdapter adapter;
+	GetterSetter addValues;
 
 	@Override protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
 		setContentView(R.layout.activity_main);
 
 		if (!isNetworkAvailable()) {
@@ -55,13 +58,16 @@ public class MainActivity extends SherlockActivity implements ActionBar.OnNaviga
 		}
 
 		myList = (ListView) findViewById(R.id.myList);
+
 		places = getResources().getStringArray(R.array.places);
 		Context context = getSupportActionBar().getThemedContext();
 		ArrayAdapter<CharSequence> list = ArrayAdapter.createFromResource(context, R.array.places,
 				R.layout.sherlock_spinner_item);
 		list.setDropDownViewResource(R.layout.sherlock_spinner_dropdown_item);
+
 		getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
 		getSupportActionBar().setListNavigationCallbacks(list, this);
+
 	}
 
 	private boolean isNetworkAvailable() {
@@ -72,11 +78,11 @@ public class MainActivity extends SherlockActivity implements ActionBar.OnNaviga
 
 	@Override public boolean onNavigationItemSelected(int itemPosition, long itemId) {
 		dialog = ProgressDialog.show(this, "", "Please wait", true);
-
+		// Add your Google Places Access key, and update the location values.
 		new readFromGooglePlaceAPI()
 				.execute("https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
 						+ "location=your_lat,your_long&radius=100000&sensor=true&"
-						+ "key=your_google_places_server_key="
+						+ "key=your_google_places_server_key&types="
 						+ places[itemPosition]);
 		myList.setOnItemClickListener(this);
 		return true;
@@ -103,15 +109,22 @@ public class MainActivity extends SherlockActivity implements ActionBar.OnNaviga
 					addValues.setRating(arrayItems.getString("rating").toString());
 					addValues.setVicinity(arrayItems.getString("vicinity").toString());
 					myArrayList.add(addValues);
+
+					Log.d("Before", myArrayList.toString());
+
 				}
 
 			} catch (Exception e) {
 
 			}
+			System.out
+					.println("############################################################################");
+			Log.d("After:", myArrayList.toString());
 			nodata = (TextView) findViewById(R.id.nodata);
 			nodata.setVisibility(View.GONE);
 			adapter = new CustomAdapter(MainActivity.this, R.layout.list_row, myArrayList);
 			myList.setAdapter(adapter);
+			// adapter.notifyDataSetChanged();
 			dialog.dismiss();
 		}
 
@@ -154,4 +167,5 @@ public class MainActivity extends SherlockActivity implements ActionBar.OnNaviga
 		details.putExtra("lon", myArrayList.get(arg2).getLon());
 		startActivity(details);
 	}
+
 }
