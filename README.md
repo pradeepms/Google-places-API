@@ -1,6 +1,6 @@
 # Google-places-API
 
-Google places API demo app for android which lists surrounding Restaurants, Malls, ATM etc..
+Google places android app, built using Google place API and Google Android map v2 which lists surrounding Restaurants, Malls, ATM etc..
 
 #### Setup :
 1. Register for Google Places API Access key. Follow the steps [here] (https://developers.google.com/places/documentation/). And get one yourself.
@@ -8,23 +8,19 @@ Google places API demo app for android which lists surrounding Restaurants, Mall
 
 Add your Google places Access key in MainActivity.java, and also update location values.
         
-    https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=your_lat,your_long&radius=100000&sensor=true&key=your_key_here&types=
+    https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=your_lat,your_long&radius=100000&sensor=true&key=your_google_places_server_key&types=
     
     
-Add your map key in details.xml
+Add your Google map v2 key in the manifest.xml
 
-    <com.google.android.maps.MapView
-    android:layout_marginTop="10dp"
-    android:id="@+id/mapView"
-    android:layout_width="fill_parent"
-    android:layout_height="250dp"
-    android:apiKey="your_map_key"
-    android:clickable="true" />
+    <meta-data
+    android:name="com.google.android.maps.v2.API_KEY"
+    android:value="google_map_key_here" />
 
 
-#### Dependency :
+#### Dependencies :
 * Add [Action Bar Sherlock] (https://github.com/PradeepMS/ActionBarSherlock) library project.
-
+* Add google play service lib.
 
 ### Screen shots :
 ![Alt text](http://pradeepms.do.am/GitHub-Images/placeUI.png "Main UI")

@@ -1,8 +1,7 @@
 package google.places.android;
 
 public class GetterSetter {
-	String name,rating,vicinity,lon,lat;
-	
+	String name, rating, vicinity, lon, lat;
 
 	public void setName(String name) {
 		this.name = name;
@@ -19,7 +18,7 @@ public class GetterSetter {
 	public void setLat(String lat) {
 		this.lat = lat;
 	}
-	
+
 	public void setLon(String lon) {
 		this.lon = lon;
 	}
@@ -40,13 +39,13 @@ public class GetterSetter {
 		return lat;
 
 	}
-	
+
 	public String getLon() {
 		return lon;
 
 	}
-	@Override
-	   public String toString() {
-		return(this.getName()+this.getRating()+this.getVicinity());
+
+	@Override public String toString() {
+		return (this.getName() + this.getRating() + this.getVicinity());
 	}
 }
